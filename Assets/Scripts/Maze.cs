@@ -11,8 +11,10 @@
     using System.Collections.Generic;
     using UnityEngine;
     using static MazeCellObject;
+    using UnityEngine.AI;
 
-    public class Maze : MonoBehaviour
+
+public class Maze : MonoBehaviour
     {
         
     /*
@@ -45,20 +47,26 @@
             currentCell = walls;
             return currentCell;
         }
-    
+
+        public NavMeshSurface surface;
+
+        public GameObject player;
+        //public GameObject cheese;
+
     /*
     --------------------------------------------------------------------
     2. Visualize algorithm with Coroutines and Delayed execution
     --------------------------------------------------------------------
     */
-        private void Start()
+        void Start()
         {
-            StartCoroutine(BuildMaze());
+            BuildMaze();
+            surface.BuildNavMesh();
         }
-        private IEnumerator BuildMaze()
+        void BuildMaze()
         {
             //width and depth of the maze
-            int width = mazeSize.x, depth = mazeSize.y;
+            int width = mazeSize.x, depth = mazeSize.y; 
             
             
             //initialize the grid with specified size
@@ -124,19 +132,23 @@
                     mazeCell.Initialize(north, south, east, west);
 
                     CarvePassage(startPosition);
-                    yield return new WaitForSeconds(0.05f);
+                    //yield return new WaitForSeconds(0.05f);
                 }
-            }
-
 
         }
+        Instantiate(player, Vector3.zero, Quaternion.identity);
+        //Instantiate(cheese, new Vector3(22f, -2f, 39.55574f), Quaternion.identity);
+
+
+
+    }
 
     /*
     --------------------------------------------------------------------
     3. Set up constants to aid with describing the passage MazeDirections
     --------------------------------------------------------------------
     */
-        public enum MazeDirection   {
+    public enum MazeDirection   {
                                 North,
                                 South,
                                 East,
@@ -184,7 +196,7 @@
                 var rnd = new System.Random();
                 int rndInt = rnd.Next(0, MazeDirections.Count);
 
-                // int rndInt = Random.Range(0, MazeDirections.Count);
+                // int rndInt = Random.Range(0, MazeDirections.Couant nt);
                 rndList.Add(MazeDirections[rndInt]);
                 MazeDirections.RemoveAt(rndInt);
                 for(int i = 0; i < rndList.Count; i++)

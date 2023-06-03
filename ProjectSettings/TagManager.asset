@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - PickUp
+  - Floor
+  - Maze
+  - Level
+  - wall
+  - target
   layers:
   - Default
   - TransparentFX

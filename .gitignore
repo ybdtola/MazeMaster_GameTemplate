@@ -71,3 +71,13 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 .fake
+
+
+#Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

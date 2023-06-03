@@ -7,8 +7,8 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
-    public TextMeshProUGUI countText;
-    public GameObject winText;
+    //public TextMeshProUGUI countText;
+    //public GameObject winText;
 
     private Rigidbody rb;
     private float movementX;
@@ -20,20 +20,20 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        count = 0;
+        //count = 0;
 
-        SetUIText();
-        winText.SetActive(false);
+        //SetUIText();
+        //winText.SetActive(false);
     }
 
     
-    void SetUIText()
-    {
-        countText.text = "Count: " + count.ToString();
-        if(count >= 4) { 
-            winText.SetActive(true);
-        }
-    }
+    //void SetUIText()
+    //{
+    //    countText.text = "Count: " + count.ToString();
+    //    if(count >= 4) { 
+    //        winText.SetActive(true);
+    //    }
+    //}
     void OnMove(InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
@@ -52,8 +52,8 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("PickUp"))
         other.gameObject.SetActive(false);
-        count += 1;
-        SetUIText();
+        //count += 1;
+        //SetUIText();
 
     }
 }
