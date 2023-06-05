@@ -1,7 +1,7 @@
 # WhoMovedMyCheese
 
 
-![Maze](Assets/ui.png)
+![Maze](Assets/Image/ui.png)
 
 
 **Who Moved my Cheese** is a game that uses deep reinforcement learning and imitation learning to train an intelligent agents using Unity Machine Learning Agents Toolkit [ML-Agents](https://github.com/Unity-Technologies/ml-agents). The intelligent agent navigates through a maze in search for slices of swiss cheese. This page will guide you through the installation and setting the environment to run the game on your machine. 
