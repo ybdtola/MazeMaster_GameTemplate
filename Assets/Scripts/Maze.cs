@@ -50,24 +50,47 @@ public class Maze : MonoBehaviour
 
         public NavMeshSurface surface;
 
-        public GameObject player;
-        //public GameObject cheese;
+        //public GameObject player;
+    //private GameObject player1;
+    Vector3 playerPos = new Vector3(0, 0, 0);
+    //playerPos = transform.TransformDirection(playerPos);
+
 
     /*
     --------------------------------------------------------------------
     2. Visualize algorithm with Coroutines and Delayed execution
     --------------------------------------------------------------------
     */
-        void Start()
+    void Awake()
         {
             BuildMaze();
             surface.BuildNavMesh();
-        }
-        void BuildMaze()
+        //player = Instantiate(player, playerPos, Quaternion.identity);
+        //player.transform.position += Vector3.forward * Time.deltaTime;
+
+    }
+
+    //IEnumerator SetPlayerVisibility()
+    //    {
+    //        //player1 = GameObject.Find("Player(Clone)");
+    //        //find game object player(clone) in the scene
+    //        //player.SetActive(true);
+    //    //cheese = GameObject.Find("Cheese(Clone)");
+    //    yield return new WaitForSeconds(5);
+    //}
+
+    //    void Update()
+    //    {
+    //    //if (Input.GetKeyDown("f"))
+    //    //{ 
+    //        Debug.Log("Hi");
+    //            StartCoroutine(SetPlayerVisibility());
+    //        //}
+    //    }
+    void BuildMaze()
         {
             //width and depth of the maze
             int width = mazeSize.x, depth = mazeSize.y; 
-            
             
             //initialize the grid with specified size
             maze = new MazeCell[width, depth];
@@ -136,10 +159,7 @@ public class Maze : MonoBehaviour
                 }
 
         }
-        Instantiate(player, Vector3.zero, Quaternion.identity);
         //Instantiate(cheese, new Vector3(22f, -2f, 39.55574f), Quaternion.identity);
-
-
 
     }
 
