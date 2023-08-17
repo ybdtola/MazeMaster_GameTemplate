@@ -24,7 +24,6 @@ public class MazeArea : MonoBehaviour
         float firstItemPosX = spawn_cheese.GetFirstItemPos(level_instance).min.x;
         float firstItemPosZ = spawn_cheese.GetFirstItemPos(level_instance).min.z;
 
-
         return (firstItemPosX, firstItemPosZ);
     }
 

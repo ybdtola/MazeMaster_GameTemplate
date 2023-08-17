@@ -5,6 +5,7 @@ using static UnityEngine.GraphicsBuffer;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Move : MonoBehaviour
 {
@@ -21,16 +22,37 @@ public class Move : MonoBehaviour
     private Vector3 velocity;
     private CharacterController controller;
     private SpawnController spawnCheese;
+    private MazeCellObject mco;
+
     private Animator anim;
-    private int count;
+    private int count;  
 
     public GameObject target;
+
     public TextMeshProUGUI countText;
-    public GameObject winText;
+    public GameObject winUI;
+    GameObject doorInstance;
+    GameObject mc;
+    GameObject gm;
+    Scene scene;
+
+    [SerializeField] int cheeseCount;
+
+    //public static Move instance;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+
+        //if (instance != null && instance != this)
+        //{
+        //    Destroy(this.gameObject);
+        //}
+        //else
+        //{
+        //    instance = this;
+        //}
+        //DontDestroyOnLoad(this);
     }
 
     void ResetCheese()
@@ -40,23 +62,77 @@ public class Move : MonoBehaviour
 
     void Start()
     {
+        //TimerController.instance.BeginTimer();
+
+        mc = GameObject.Find("MazeObject");
+        doorInstance = GameObject.Find("Door(Clone)");
+        doorInstance.SetActive(false);
+
         spawnCheese = GetComponent<SpawnController>();
         spawnCheese.SpawnCheese(target);
+
+        scene = SceneManager.GetActiveScene();
+        Debug.Log(scene.name + " " + scene.buildIndex);
+        
+
 
         anim = GetComponentInChildren<Animator>();
         count = 0;
         SetUIText();
-        winText.SetActive(false);
+        //winText.SetActive(false);
+       
     }
 
+    public void QuitScreen()
+    {
+        StartCoroutine(QuitWinUI());
+    }
+    IEnumerator QuitWinUI()
+    {
+        yield return new WaitForSeconds(2);
+        winUI.SetActive(false);
+
+    }
     void SetUIText()
     {
         countText.text = count.ToString();
-        //if (count >= 5)
-        //{
-        //    winText.SetActive(true);
-        //    //UnityEditor.EditorApplication.isPlaying = false;
-        //}
+        if (count == 2 && scene.name == "Level 1")
+        {
+            //winText.SetActive(true);
+            winUI.SetActive(true);
+            //Time.timeScale = 0f;
+            //SceneManager.LoadScene(4);
+
+            for (int i = 0; i < mc.transform.childCount; i++)
+            {
+                gm = mc.transform.GetChild(mc.transform.childCount - 1).gameObject;
+                Debug.Log(gm.name);
+            }
+            //get script from gm
+            GameObject l = gm.GetComponent<MazeCellObject>().GetNorthWall().gameObject;
+            l.SetActive(false);
+            Debug.Log(l.name);
+           
+
+            doorInstance.SetActive(true);
+
+            //foreach (Transform child in mc.transform)
+            //{
+            //    Debug.Log(child.name);
+            //}
+            Debug.Log(mc);
+            QuitScreen();
+        }
+            UpdateCheeseCount();
+            //UnityEditor.EditorApplication.isPlaying = false;
+
+    }
+
+    private void UpdateCheeseCount()
+    {
+        UIManager.instance.cheeseText.text = cheeseCount.ToString();
+        GameManager.instance.currentCheese = cheeseCount;
+        Debug.Log(cheeseCount.ToString() + "the update cheese count fx");
     }
 
     void CalculateDistance()
@@ -73,7 +149,6 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Movement();
     }
 
@@ -146,9 +221,11 @@ public class Move : MonoBehaviour
         if (other.TryGetComponent<Goal>(out Goal goal))
         {
             //Debug.Log("Win");
+            FindObjectOfType<AudioManager>().Play("Item Pickup");
             goal.gameObject.SetActive(false);
             CalculateDistance();
             count += 1;
+            cheeseCount += 1;
             SetUIText();
         }
     }

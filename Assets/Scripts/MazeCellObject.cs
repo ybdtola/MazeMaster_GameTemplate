@@ -41,7 +41,12 @@ public class MazeCellObject : MonoBehaviour
         eastWall.SetActive(east);
         westWall.SetActive(west);
     }
-    
+
+    // function to return north wall
+    public GameObject GetNorthWall()
+    {
+        return northWall;
+    }
 }
 
 

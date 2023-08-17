@@ -130,6 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8720e2906c600845a15dd9a60d54bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerChaseRange: 0
+  shouldWander: 0
+  pauseLength: 0
+  wanderLength: 0
 --- !u!195 &942796135
 NavMeshAgent:
   m_ObjectHideFlags: 0

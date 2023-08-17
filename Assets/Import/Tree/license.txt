@@ -1,0 +1,11 @@
+Model Information:
+* title:	Tree
+* source:	https://sketchfab.com/3d-models/tree-e00f74e22f824461a2bf7e4c36fb6947
+* author:	bananabeany (https://sketchfab.com/bananabeany)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Tree" (https://sketchfab.com/3d-models/tree-e00f74e22f824461a2bf7e4c36fb6947) by bananabeany (https://sketchfab.com/bananabeany) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

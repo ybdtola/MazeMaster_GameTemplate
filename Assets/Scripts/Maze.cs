@@ -1,12 +1,4 @@
-    
-    /*
-                            --------------------------------------------------------------------
-                                PROCEDURAL MAZE GENERATION USING BINARY TREE ALGORITHM
-                            --------------------------------------------------------------------
-    */ 
-    
-    
-    
+
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -16,16 +8,12 @@
 
 public class Maze : MonoBehaviour
     {
-        
-    /*
-    --------------------------------------------------------------------
-    1. Initialize the class variables and properties
-    --------------------------------------------------------------------
-    */
         [SerializeField] GameObject WallPrefab;
+    [SerializeField] GameObject DoorPrefab;
 
-        //cell size
-        public float CellSize;
+    Quaternion myRotation = Quaternion.identity;
+    //cell size
+    public float CellSize;
 
         //maze dimensions - depth and width
         public Vector2Int mazeSize = new Vector2Int(10, 10);
@@ -55,18 +43,14 @@ public class Maze : MonoBehaviour
     Vector3 playerPos = new Vector3(0, 0, 0);
     //playerPos = transform.TransformDirection(playerPos);
 
-
-    /*
-    --------------------------------------------------------------------
-    2. Visualize algorithm with Coroutines and Delayed execution
-    --------------------------------------------------------------------
-    */
     void Awake()
         {
             BuildMaze();
             surface.BuildNavMesh();
         //player = Instantiate(player, playerPos, Quaternion.identity);
         //player.transform.position += Vector3.forward * Time.deltaTime;
+        //DoorPrefab = GameObject.Find("Door(Clone)");
+        
 
     }
 
@@ -137,22 +121,31 @@ public class Maze : MonoBehaviour
                         }
                     }
 
+
                     // create boundaries
                     if(x == 0 ) west = true;
                     if (x == width - 1) east = true;
                     if (z == 0) south = true;
 
-                    // create entrance and exit
-                        //if(x == 0 && z == 0){
-                        //    west = false;
-                        //}
-                        //if(x == width - 1 && z == depth - 1){
-                        //    east = false;
-                        //}
+                //create entrance and exit
+                //if (x == 0 && z == 0)
+                //{
+                //    west = false;
+                //}
+                if (x == width - 1 && z == depth - 1)
+                {
+                    //north = false;
+                    //move the transform position of doorprefab by 0.5f in y and z axis
+                    Vector3 newPos = new Vector3(0f, 9.28f, 7.39f);
+                    //rotate newpos by 90 degrees
+                    myRotation.eulerAngles = new Vector3(0, -180, 0);
+                    Instantiate(DoorPrefab, newPos + new Vector3(x * CellSize, 0, z * CellSize), myRotation);
+                    //DoorPrefab.SetActive(false);
+                }
 
 
-                    // call the Initialize function to buid maze
-                    mazeCell.Initialize(north, south, east, west);
+                // call the Initialize function to buid maze
+                mazeCell.Initialize(north, south, east, west);
 
                     CarvePassage(startPosition);
                     //yield return new WaitForSeconds(0.05f);
@@ -169,11 +162,11 @@ public class Maze : MonoBehaviour
     --------------------------------------------------------------------
     */
     public enum MazeDirection   {
-                                North,
-                                South,
-                                East,
-                                West
-        }
+                                    North,
+                                    South,
+                                    East,
+                                    West
+                                }
 
         // check the neighbour cell is within the bounds of the grid and has not yet been visited
         bool IsValidCell(Vector2Int neighbour)

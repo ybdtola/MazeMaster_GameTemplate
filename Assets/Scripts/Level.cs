@@ -12,6 +12,7 @@ public class Level : MonoBehaviour
     private SpawnController spawnCheese;
     public GameObject cheese;
 
+
     Vector3 playerPos;
 
     // Start is called before the first frame update
@@ -22,7 +23,7 @@ public class Level : MonoBehaviour
         spawnCheese = GetComponent<SpawnController>();
 
         //Instantiate(player, new Vector3(0f, 1f, 0f), Quaternion.identity);
-        spawnCheese.SpawnCheese(cheese);
+        //spawnCheese.SpawnCheese(cheese);
     }
 
     // Update is called once per frame

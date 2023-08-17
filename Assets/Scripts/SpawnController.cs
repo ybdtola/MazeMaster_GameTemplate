@@ -25,6 +25,23 @@ public class SpawnController : MonoBehaviour
         return lastItem;
     }
 
+    //public void SpawnEnemy(UnityEngine.AI.NavMeshAgent enemy)
+    //{
+    //    areas = GameObject.FindGameObjectsWithTag("Floor");
+    //    var radn = areas.Length - 1;
+    //    Debug.Log(radn + " escapism");
+
+    //    var spawnAreaTransform = areas[radn].transform;
+
+    //    var xRange = spawnAreaTransform.localScale.x / 2.0f;
+    //    var zRange = spawnAreaTransform.localScale.z / 2.5f;
+
+    //    enemy.transform.position = new Vector3(Random.Range(-xRange, xRange), 0, Random.Range(-zRange, zRange))
+    //        + spawnAreaTransform.position;
+
+    //    Instantiate(enemy, enemy.transform.position, Quaternion.identity);
+    //}
+
     public void SpawnCheese(GameObject cheese)
     {
         areas = GameObject.FindGameObjectsWithTag("Floor");
@@ -41,6 +58,8 @@ public class SpawnController : MonoBehaviour
         Instantiate(cheese, cheese.transform.position, Quaternion.identity);
 
     }
+
+   
 
     //public Vector3 GetCheeseCurrentLocation()
     //{

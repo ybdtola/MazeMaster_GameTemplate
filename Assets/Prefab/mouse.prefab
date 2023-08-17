@@ -1003,9 +1003,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  walkSpeed: 0
   runSpeed: 0
+  isGrounded: 0
+  groundCheckDistance: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  gravity: 0
   target: {fileID: 5994825663339793942, guid: c787cedbad095b242ab68bfb107bf049, type: 3}
+  countText: {fileID: 0}
+  winText: {fileID: 0}
+  cheeseCount: 0
 --- !u!1 &5548442817262414015
 GameObject:
   m_ObjectHideFlags: 0

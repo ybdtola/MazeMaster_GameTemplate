@@ -1151,7 +1151,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2467241329790232748}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.1824397, y: -0.14703587, z: -0.014190764, w: 0.97205704}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1160,7 +1160,7 @@ Transform:
   - {fileID: 2467241329095163212}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -21.03, y: -17.5, z: 1.6}
 --- !u!114 &2467241329790232785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,6 +1208,7 @@ MonoBehaviour:
   target: {fileID: 5994825663339793942, guid: c787cedbad095b242ab68bfb107bf049, type: 3}
   countText: {fileID: 0}
   winText: {fileID: 0}
+  cheeseCount: 0
 --- !u!54 &2467241329790232750
 Rigidbody:
   m_ObjectHideFlags: 0

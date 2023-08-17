@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     {
         //offset = transform.position - player.transform.position;
         parent = transform.parent;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
